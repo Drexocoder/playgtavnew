@@ -24,6 +24,7 @@ def patch_worker(code):
 def patch_page(code):
     old_title = '<title>game</title>'
     new_title = '''<title>GTA 5 Browser Game – Play Online | PlayGTA5</title>
+<meta name="monetag" content="9522db356682d3964b49623aa333985b">
 <meta name="description" content="Play a GTA V browser-game build online. Check browser compatibility, WebGPU support, loading tips, and performance settings for desktop Chrome and Edge.">
 <meta name="keywords" content="PlayGTA5, play GTA5.com, playgta5com, GTA.deloskiYT.com, gtadeloskiytcom, GTA 5 browser game, GTA V browser gameplay, play GTA 5 online, GTA 5 web game">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -54,7 +55,10 @@ def finish(output):
     help_dir = output / 'help'
     help_dir.mkdir()
     shutil.copyfile(HERE / 'public/index.html', help_dir / 'index.html')
-    print('Ready: playable game at /; download/help page at /help/', flush=True)
+    # Monetag's provided verification file must be served from the site root, not /help/.
+    for name in ('sw.js', 'robots.txt', 'sitemap.xml'):
+        shutil.copyfile(HERE / 'public' / name, output / name)
+    print('Ready: playable game at /; Monetag verification file at /sw.js; help at /help/', flush=True)
 
 
 def build(output, source=None):
