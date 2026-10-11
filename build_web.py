@@ -22,6 +22,20 @@ def patch_worker(code):
 
 
 def patch_page(code):
+    old_title = '<title>game</title>'
+    new_title = '''<title>GTA 5 Browser Game – Play Online | PlayGTA5</title>
+<meta name="description" content="Play a GTA V browser-game build online. Check browser compatibility, WebGPU support, loading tips, and performance settings for desktop Chrome and Edge.">
+<meta name="keywords" content="PlayGTA5, play GTA5.com, playgta5com, GTA.deloskiYT.com, gtadeloskiytcom, GTA 5 browser game, GTA V browser gameplay, play GTA 5 online, GTA 5 web game">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://playgtavnew.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GTA 5 Browser Game – Play Online | PlayGTA5">
+<meta property="og:description" content="Play a GTA V browser-game build online. Browser compatibility, WebGPU support, loading tips, and performance settings.">
+<meta property="og:url" content="https://playgtavnew.vercel.app/">
+<meta name="twitter:card" content="summary">'''
+    if code.count(old_title) != 1:
+        raise ValueError('Unrecognized game page: expected exactly one original document title')
+    code = code.replace(old_title, new_title)
     old = 'const q = new URLSearchParams(location.search);'
     new = old + "\n// Conservative hosted defaults; explicit URL settings still take precedence.\nfor (const [key, value] of Object.entries({low:'1', fps:'30', res:'1280x720'})) { if (!q.has(key)) q.set(key, value); }"
     if code.count(old) != 1:
