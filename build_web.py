@@ -33,7 +33,8 @@ def patch_page(code):
 <meta property="og:title" content="GTA 5 Browser Game – Play Online | PlayGTA5">
 <meta property="og:description" content="Play a GTA V browser-game build online. Browser compatibility, WebGPU support, loading tips, and performance settings.">
 <meta property="og:url" content="https://playgtavnew.vercel.app/">
-<meta name="twitter:card" content="summary">'''
+<meta name="twitter:card" content="summary">
+<script>(function(s){s.dataset.zone='12007947',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>'''
     if code.count(old_title) != 1:
         raise ValueError('Unrecognized game page: expected exactly one original document title')
     code = code.replace(old_title, new_title)
