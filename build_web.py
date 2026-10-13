@@ -24,15 +24,16 @@ def patch_worker(code):
 def patch_page(code):
     old_title = '<title>game</title>'
     new_title = '''<title>GTA 5 Browser Game – Play Online | PlayGTA5</title>
+<script src="https://quge5.com/88/tag.min.js" data-zone="295102" async data-cfasync="false"></script>    
 <meta name="monetag" content="9522db356682d3964b49623aa333985b">
 <meta name="description" content="Play a GTA V browser-game build online. Check browser compatibility, WebGPU support, loading tips, and performance settings for desktop Chrome and Edge.">
 <meta name="keywords" content="PlayGTA5, play GTA5.com, playgta5com, GTA.deloskiYT.com, gtadeloskiytcom, GTA 5 browser game, GTA V browser gameplay, play GTA 5 online, GTA 5 web game">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="https://playgtavnew.vercel.app/">
+<link rel="canonical" href="https://5.gtabrowser.com">
 <meta property="og:type" content="website">
 <meta property="og:title" content="GTA 5 Browser Game – Play Online | PlayGTA5">
 <meta property="og:description" content="Play a GTA V browser-game build online. Browser compatibility, WebGPU support, loading tips, and performance settings.">
-<meta property="og:url" content="https://playgtavnew.vercel.app/">
+<meta property="og:url" content="https://5.gtabrowser.com">
 <meta name="twitter:card" content="summary">
 <script>(function(s){s.dataset.zone='12007947',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>'''
     if code.count(old_title) != 1:
