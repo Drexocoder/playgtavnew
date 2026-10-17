@@ -15,7 +15,7 @@ PREFIX = 'mirror/playgta5.com/'
 
 def patch_worker(code):
     old = 'if (wanted.size) await batchFetch(full, true, wanted);'
-    new = 'for (const r of full) { if (wanted.has(r.id)) await ensureBlocks(r.id, r.a, r.b, true); }'
+    new = 'const pending = full.filter(r => wanted.has(r.id)); for (let i = 0; i < pending.length; i += 4) { await Promise.all(pending.slice(i, i + 4).map(async r => { try { await ensureBlocks(r.id, r.a, r.b, true); } catch (error) { console.error("[PlayGTA5] asset prefetch failed", r.id, error); throw error; } })); }'
     if code.count(old) != 1:
         raise ValueError('Unrecognized I/O worker: expected exactly one batch prefetch call')
     return code.replace(old, new)
